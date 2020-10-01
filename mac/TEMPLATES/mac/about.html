@@ -1,0 +1,87 @@
+{% extends 'mac/base.html' %}
+
+{% block title %} About Us{% endblock %}
+{% block body %}
+
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">My Awesome Cart</h1>
+      <p>Amazon.com, Inc.[7] (/ˈæməzɒn/), is an American multinational technology company based in Seattle, Washington. Amazon focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence. It is considered one of the Big Four technology companies, along with Google, Apple, and Facebook.[8][9][10][11] It has been referred to as "one of the most influential economic and cultural forces in the world" as well as the world's most valuable brand.[12][13]</p>
+      <p><a class="btn btn-primary btn-lg" href="" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Salman Khan</h2>
+        <p>Abdul Rashid Salim Salman Khan (pronounced [səlˈmaːn ˈxaːn]; Hindi: About this soundpronunciation (help·info); 27 December 1965)[4] is an Indian film actor, producer, occasional singer and television personality. In a film career spanning over thirty years, Khan has received numerous awards, including two National Film Awards as a film producer, and two Filmfare Awards for acting.[5] He is cited in the media as one of the most commercially successful actors of both world and Indian cinema. </p>
+        <p><a class="btn btn-primary" href="https://en.wikipedia.org/wiki/Salman_Khan" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Aamir Khan</h2>
+        <p>Mohammed Aamir Hussain Khan (pronounced [ˈaːmɪr ˈxaːn]; born 14 March 1965) is an Indian actor, director, filmmaker and television talk-show host. Through his career spanning over thirty years in Hindi films, Khan has established himself as one of the most popular and influential actors of Indian cinema.[2][3] He has a large global following, especially in India and China, and has been described by Newsweek as "the biggest movie star"[4][5] in the world.[6][7][8] Khan is the recipient of numerous awards, including nine Filmfare Awards, four National Film Awards, and an AACTA Award.  </p>
+        <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Aamir_Khan" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2> Mr. AJAY </h2>
+        <h4> he is a software engineer</h4>
+        <p>This web site developed my mr Ajay. He is a good progrmmaer.he is  a python developer .this website developd using django framwork . this framwork is very fast . this ia also a good pratice byme . i am also learning flask framworl using python. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script></body>
+</html>
+
+
+{% endblock %}
+
+
+ {% block js %}  
+    <script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+
+$('#popcart').popover()
+document.getElementById("popcart").setAttribute('data-content', '<h5>Cart for your items in my shopping cart</h5>');
+</script>
+    
+    
+     {% endblock %}
+    
